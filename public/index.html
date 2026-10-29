@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Personal Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside id="sidebar" class="sidebar">
+    <button id="newChatBtn" class="btn primary">＋ New chat</button>
+    <div class="side-label">History</div>
+    <nav id="chatList" class="chat-list"></nav>
+    <button id="settingsBtn" class="btn ghost">⚙ Settings</button>
+  </aside>
+  <div id="scrim" class="scrim"></div>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="menuBtn" class="icon-btn" aria-label="Toggle sidebar">☰</button>
+      <span id="title" class="title">AI Assistant</span>
+    </header>
+
+    <section id="messages" class="messages" aria-live="polite">
+      <div id="welcome" class="welcome">
+        <h1 id="greeting">Hello! I'm your AI assistant.</h1>
+        <p>What would you like to work on today?</p>
+        <div class="cards">
+          <button class="card" data-prompt="Explain how black holes work in simple language.">💡<b>Explain a topic</b><span>Simple, clear explanations</span></button>
+          <button class="card" data-prompt="Help me write a polite email asking my manager for a day off next Friday.">✍️<b>Help me write</b><span>Emails, messages, notes</span></button>
+          <button class="card" data-prompt="Give me 10 creative ideas for a weekend side project.">✨<b>Generate ideas</b><span>Brainstorm and plan</span></button>
+          <button class="card" data-prompt="Help me learn JavaScript. Explain what a closure is with an example.">💻<b>Help me code</b><span>Learn, explain, debug</span></button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="composer-wrap">
+      <div class="composer">
+        <textarea id="input" rows="1" maxlength="4000" placeholder="Message your assistant…"></textarea>
+        <button id="sendBtn" class="send" aria-label="Send">➤</button>
+        <button id="stopBtn" class="send stop" aria-label="Stop" hidden>■</button>
+      </div>
+      <div class="hint"><span id="hintText">Enter to send · Shift+Enter for new line</span><span id="counter">0 / 4000</span></div>
+    </footer>
+  </main>
+
+  <dialog id="settings" class="modal">
+    <form method="dialog">
+      <h2>Settings</h2>
+      <label>Theme
+        <select id="themeSel"><option value="dark">Dark</option><option value="light">Light</option></select>
+      </label>
+      <label>Response style
+        <select id="styleSel"><option value="concise">Concise</option><option value="balanced">Balanced</option><option value="detailed">Detailed</option></select>
+      </label>
+      <label>Assistant name
+        <input id="nameInp" maxlength="40" />
+      </label>
+      <button type="button" id="clearBtn" class="btn danger">Clear all chat history</button>
+      <p class="privacy"><b>Privacy:</b> chats and preferences are stored only in this browser (localStorage). Each message you send, plus recent conversation context, is sent through this app's server to Google's Gemini API to generate replies. Your API key stays on the server. Don't share sensitive information.</p>
+      <button class="btn primary">Done</button>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
