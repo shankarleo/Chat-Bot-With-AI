@@ -14,6 +14,7 @@ const ORIGIN = process.env.ALLOWED_ORIGIN || `http://localhost:${PORT}`;
 const MAX_MESSAGES = 30, MAX_CHARS = 4000;
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(cors({ origin: ORIGIN }));
 app.use(express.json({ limit: "200kb" })); // request-size limit
 
